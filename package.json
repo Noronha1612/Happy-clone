@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "start": "ts-node-dev --ignore-watch node_modules src/index.ts"
+    "start": "ts-node-dev --ignore-watch node_modules src/index.ts",
+    "knex:migrate": "knex --knexfile knexfile.ts migrate:latest"
   },
   "keywords": [],
   "author": "",
