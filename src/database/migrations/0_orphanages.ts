@@ -7,9 +7,9 @@ export function up(knex: Knex) {
         table.string('about').notNullable();
         table.string('instructions').notNullable();
         table.string('whatsapp').notNullable();
+        table.string('open_hours').notNullable();
         table.json('location').notNullable();
-        table.json('photosUrls').notNullable();
-        table.json('open_hours').notNullable();
+        table.json('photoUrls').notNullable();
         table.boolean('open_on_weekends').notNullable();
     });
 }

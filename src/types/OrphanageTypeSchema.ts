@@ -1,9 +1,4 @@
-interface OpenHours {
-    hours: number;
-    minutes: number;
-}
-
-export interface Orphanage {
+export interface IOrphanage {
     name: string;
     whatsapp: string;
     about: string;
@@ -13,6 +8,6 @@ export interface Orphanage {
         longitude: number;
     };
     photoUrls: string[];
-    open_hours: OpenHours[];
+    open_hours: string;
     open_on_weekends: boolean;
 }
