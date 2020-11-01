@@ -1,0 +1,27 @@
+:root {
+    --gradient-background: linear-gradient(329.54deg, #29B6D1 0%, #00C7C7 100%);
+    --color-primary: #15C3D6;
+    --color-primary-dark: #12AFCB;
+    --color-primary-light: #17D6EB;
+    --color-primary-ligher: #96FEFF;
+    --color-secondary: #FFD666;
+    --color-delete: #FF669D;
+    --text-title: #4D6F80;
+    --text-base: #5C8599;
+    --text-secondary: #8FA7B3;
+    --text-button: #FFF;
+    --color-shapes: #FFF;
+    --color-background: #EBF2F5;
+    --color-shape-border: #D3E2E5;
+    --color-input-background: #F5F8FA;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+input, button, textarea {
+    outline: none;
+}
