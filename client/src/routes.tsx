@@ -8,7 +8,7 @@ const Routes: React.FC = () => {
                 
             </Switch>
         </BrowserRouter>
-    )
+    );
 }
 
 export default Routes;
