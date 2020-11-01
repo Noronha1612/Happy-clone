@@ -3,7 +3,7 @@
     --color-primary: #15C3D6;
     --color-primary-dark: #12AFCB;
     --color-primary-light: #17D6EB;
-    --color-primary-ligher: #96FEFF;
+    --color-primary-lighter: #96FEFF;
     --color-secondary: #FFD666;
     --color-delete: #FF669D;
     --text-title: #4D6F80;
@@ -11,6 +11,7 @@
     --text-secondary: #8FA7B3;
     --text-button: #FFF;
     --color-shapes: #FFF;
+    --color-white: #FFF;
     --color-background: #EBF2F5;
     --color-shape-border: #D3E2E5;
     --color-input-background: #F5F8FA;
@@ -22,6 +23,11 @@
     box-sizing: border-box;
 }
 
+html, body {
+    background: var(--color-background);
+}
+
 input, button, textarea {
     outline: none;
+    cursor: pointer;
 }

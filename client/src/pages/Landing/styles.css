@@ -1,0 +1,94 @@
+.landing-container {
+    background: var(--gradient-background);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.landing-container h1 {
+    color: var(--color-white);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 76px;
+    line-height: 70px;
+    max-width: 350px;
+    user-select: none;
+}
+
+.landing-container .wrapper {
+    position: relative;
+
+    width: 100%;
+    max-width: 1100px;
+
+    height: 100%;
+    max-height: 680px;
+
+    margin: 0 auto;
+
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.landing-container h3 {
+    color: var(--color-white);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    max-width: 290px;
+    margin-top: 40px;
+}
+
+.landing-container .background-illustration {
+    position: absolute;
+    top: 8%;
+    left: 35%;
+    height: 90%;
+}
+
+.landing-container .enter {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+
+    background: var(--color-secondary);
+    border: none;
+    border-radius: 30px;
+    width: 80px;
+    height: 80px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 28px;
+    color: rgba(0, 0, 0, .6);
+
+    transition: .6s;
+}
+
+.landing-container .enter:hover {
+    background: var(--color-primary-lighter);
+}
+
+.landing-container .location {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-weight: 400;
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+    color: var(--color-white);
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+.landing-container .location strong {
+    font-size: 24px;
+}
