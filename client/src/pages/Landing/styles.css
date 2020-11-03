@@ -20,6 +20,8 @@
 .landing-container .wrapper {
     position: relative;
 
+    padding: 50px 0;
+
     width: 100%;
     max-width: 1100px;
 
@@ -52,8 +54,8 @@
 
 .landing-container .enter {
     position: absolute;
-    right: 0;
-    bottom: 0;
+    right: 30px;
+    bottom: 30px;
 
     background: var(--color-secondary);
     border: none;
@@ -77,8 +79,8 @@
 
 .landing-container .location {
     position: absolute;
-    top: 0;
-    right: 0;
+    top: 30px;
+    right: 30px;
     font-weight: 400;
     font-family: 'Nunito', sans-serif;
     font-size: 22px;
