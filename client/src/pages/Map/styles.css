@@ -4,3 +4,31 @@
 
     background: var(--gradient-background);
 }
+
+.map-container aside .happy-point {
+    margin-top: 80px;
+    margin-left: 70px;
+}
+
+.map-container aside h1 {
+    color: var(--color-white);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 700;
+    font-size: 46px;
+    line-height: 45px;
+    max-width: 350px;
+    user-select: none;
+
+    margin-top: 80px;
+    margin-left: 70px;
+}
+
+.map-container aside h4 {
+    color: var(--color-white);
+    font-family: 'Nunito', sans-serif;
+    font-weight: 300;
+    font-size: 18px;
+    max-width: 290px;
+    margin-top: 40px;
+    margin-left: 70px;
+}
