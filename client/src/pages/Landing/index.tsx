@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { FaArrowRight } from 'react-icons/fa';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 import Illustration from '../../assets/LandingIllustration.png';
 import LogoWeb from '../../assets/LogoWeb.png';
@@ -68,7 +69,7 @@ const Landing: React.FC = () => {
                 <span>{location.results[0].components.state}</span>
             </div>)}
 
-            <button className="enter"><FaArrowRight/></button>
+            <Link to="/map" className="enter"><FaArrowRight/></Link>
           </div>
       </div>
   );

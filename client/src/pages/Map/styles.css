@@ -1,0 +1,6 @@
+.map-container aside {
+    width: 440px;
+    height: 100vh;
+
+    background: var(--gradient-background);
+}
