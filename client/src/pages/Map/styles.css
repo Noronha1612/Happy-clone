@@ -1,3 +1,7 @@
+.map-container {
+    display: inline-flex;
+}
+
 .map-container aside {
     width: 440px;
     height: 100vh;
@@ -31,4 +35,32 @@
     max-width: 290px;
     margin-top: 40px;
     margin-left: 70px;
+}
+
+.map-container aside .location {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-weight: 400;
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    color: var(--color-white);
+
+    position: relative;
+
+    margin-left: 70px;
+
+    margin-top: 120px;
+}
+.map-container aside .location strong {
+    font-size: 22px;
+}
+
+.map-container section {
+    width: calc(100vw - 440px);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
