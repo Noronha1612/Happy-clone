@@ -3,7 +3,8 @@ import { FaArrowRight } from 'react-icons/fa';
 import axios from 'axios';
 
 import Illustration from '../../assets/LandingIllustration.png';
-import Logo from '../../assets/Logo.png';
+import LogoWeb from '../../assets/LogoWeb.png';
+import LogoMobile from '../../assets/LogoMobile.png';
 
 import ILocation from '../../types/location';
 
@@ -15,6 +16,17 @@ const Landing: React.FC = () => {
   const [ hasLocationAccess, setHasLocationAccess ] = useState(false);
   const [ location, setLocation ] = useState<ILocation>({ results: [{ components: { state: '', city: '' }}]});
   
+  const [ logo, setLogo ] = useState(window.innerWidth > 1200 ? LogoWeb : LogoMobile);
+
+  useEffect(() => {
+    function checkLogo() {
+      if ( window.innerWidth > 1200 ) setLogo(LogoWeb);
+      else setLogo(LogoMobile);
+    }
+
+    window.addEventListener('resize', checkLogo);
+  }, []);
+
   useEffect(() => {
     navigator.geolocation.getCurrentPosition(position => {
       setLatitude(position.coords.latitude);
@@ -41,7 +53,8 @@ const Landing: React.FC = () => {
   return (
       <div className="landing-container">
           <div className="wrapper">
-            <img src={Logo} alt="Happy"/>
+            <img src={Illustration} alt="Faça a felicidade" className="background-illustration"/>
+            <img src={ logo } alt="Happy" className="main-logo"/>
 
             <div className="content">
                 <h1>Leve felicidade para o mundo</h1>
@@ -49,7 +62,6 @@ const Landing: React.FC = () => {
                 <h3>Visite orfanatos e mude o dia de muitas crianças.</h3>
             </div>
 
-            <img src={Illustration} alt="Faça a felicidade" className="background-illustration"/>
 
             {hasLocationAccess && (<div className="location">
                 <strong>{location.results[0].components.city}</strong>
