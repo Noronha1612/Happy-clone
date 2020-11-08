@@ -99,6 +99,50 @@
     color: var(--color-white);
 }
 
+.map-container .popup .leaflet-popup-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.map-container .popup .leaflet-popup-content-wrapper {
+    background: rgba(255, 255, 255, 0.9);
+    box-shadow: 17.2868px 27.6589px 41.4884px rgba(23, 142, 166, 0.16);
+    border-radius: 20px;
+}
+
+.map-container .popup span {
+    font-size: 18px;
+    font-weight: 700;
+    font-family: 'Nunito', sans-serif;
+
+    margin-right: 10px;
+
+    color: var(--text-title);
+}
+
+.map-container .popup .orphanage-btn {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    border-radius: 8px;
+    background: var(--color-primary);
+
+    transition: .3s;
+}
+
+.map-container .popup .orphanage-btn:hover {
+    background: var(--color-primary-light);
+}
+
+.map-container .popup .orphanage-btn .arrowR-icon {
+    color: var(--color-white);
+}
+
 @media screen and (max-width: 800px) {
     .map-container section {
         width: 100vw;
