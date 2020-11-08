@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Marker, Popup } from 'react-leaflet';
+import { FiPlus } from 'react-icons/fi';
 
 import LeafletMap from '../../components/Map';
 import MarkerIcon from '../../components/Map/HappyIcon';
@@ -11,6 +12,7 @@ import HappyPoint from '../../assets/HappyPoint.png';
 import { ILocation } from '../../types/location';
 
 import './styles.css';
+import { Link } from 'react-router-dom';
 
 const Map: React.FC = () => {
 
@@ -58,6 +60,10 @@ const Map: React.FC = () => {
                     </Marker>
                 </LeafletMap>
             </section>
+
+            <Link to="/orphanages/create" className="create-btn">
+                <FiPlus size={32} className="plus-icon" />  
+            </Link>
         </div>
     );
 }
