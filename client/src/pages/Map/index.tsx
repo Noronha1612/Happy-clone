@@ -1,4 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import { Marker, Popup } from 'react-leaflet';
+
+import LeafletMap from '../../components/Map';
+import MarkerIcon from '../../components/Map/HappyIcon';
 
 import GetUserLocation from '../../utils/GetUserLocation';
 
@@ -46,7 +50,13 @@ const Map: React.FC = () => {
             </aside>
 
             <section>
-                <span>MAPA</span>
+                <LeafletMap>
+                    <Marker icon={MarkerIcon} position={[location.coords.latitude, location.coords.longitude]}>
+                        <Popup>
+                            A pretty CSS3 popup. <br /> Easily customizable.
+                        </Popup>
+                    </Marker>
+                </LeafletMap>
             </section>
         </div>
     );
