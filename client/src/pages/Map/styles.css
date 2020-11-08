@@ -12,6 +12,9 @@
 .map-container aside .happy-point {
     margin-top: 80px;
     margin-left: 70px;
+
+    height: 70px;
+    width: 60px;
 }
 
 .map-container aside h1 {
@@ -63,4 +66,48 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+@media screen and (max-width: 800px) {
+    .map-container section {
+        width: 100vw;
+    }
+
+    .map-container aside {
+        display: none;
+    }
+}
+
+@media screen and (max-height: 650px) {
+    .map-container aside h4 {
+        display: none;
+    }
+
+    .map-container aside .location {
+        margin-top: 80px;
+    }
+}
+
+@media screen and (max-height: 530px) {
+    .map-container aside .location {
+        display: none;
+    }
+
+    .map-container aside {
+        padding: 20px;
+    
+        display: inline-flex;
+
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .map-container aside .happy-point {
+        margin: 0 20px 0 0;
+    }
+
+    .map-container aside h1 {
+        font-size: 32px;
+        margin: 0;
+    }
 }
