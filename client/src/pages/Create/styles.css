@@ -36,6 +36,12 @@
     background: var(--color-primary-light);
 }
 
+.create-container .content-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
 .create-container fieldset {
     width: 708px;
 
@@ -43,4 +49,165 @@
 
     border: 1px solid var(--color-shape-border);
     background: var(--color-white);
+    border-radius: 20px;
+
+    padding: 80px 64px;
+
+    margin-bottom: 40px;
+}
+
+.create-container .content-container h4 {
+    margin: 40px 0;
+
+    font-family: 'Nunito', sans-serif;
+    font-size: 18px;
+    color: var(--text-secondary);
+}
+
+.create-container fieldset .section-title {
+    color: var(--text-title);
+    font-size: 32px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+}
+
+.create-container fieldset .input-box + .section-title {
+    margin-top: 40px;
+}
+
+.create-container fieldset .section-title::after {
+    content: '';
+    display: block;
+
+    background: var(--color-shape-border);
+    width: calc(100% - 4px);
+    height: 1px;
+
+    margin-top: 20px;
+}
+
+.create-container fieldset .input-box {
+    margin-top: 40px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.create-container fieldset .input-box input,
+.create-container fieldset .input-box textarea {
+    margin-top: 8px;
+
+    background: var(--color-input-background);
+
+    border: 1px solid var(--color-shape-border);
+    border-radius: 20px;
+
+    font-size: 20px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: 500;
+
+    padding: 0px 16px;
+    width: 100%;
+}
+
+.create-container fieldset .input-box input {
+    height: 64px;
+}
+
+.create-container fieldset .input-box textarea {
+    height: 120px;
+    padding: 16px;
+}
+
+.create-container fieldset .input-box label,
+.create-container fieldset .input-box .aditional,
+.create-container fieldset .bool-section label:not(.checkbox) {
+    font-family: 'Nunito', sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    color: var(--text-secondary);
+}
+
+.create-container fieldset .input-box .aditional {
+    font-weight: 300;
+    margin-left: 32px;
+}
+
+.create-container fieldset .bool-section {
+    margin-top: 40px;
+    display: inline-flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.create-container fieldset .bool-section input {
+    display: none;
+}
+
+.create-container fieldset .bool-section .checkbox {
+    position: relative;
+    height: 24px;
+    width: 64px;
+
+    display: flex;
+
+    background: var(--color-input-background);
+    border: 1px solid var(--color-shape-border);
+    border-radius: 20px;
+    
+    transition: .3s;
+
+    cursor: pointer;
+}
+
+.create-container fieldset .bool-section .checkbox::after {
+    content: '';
+    display: block;
+    
+    position: absolute;
+    top: 5px;
+    left: 6px;
+
+    height: 12px;
+    width: 26px;
+
+    border-radius: 20px;
+    background: var(--text-secondary);
+    transition: .3s;
+}
+
+.create-container fieldset .bool-section .active {
+    background: var(--color-confirm);
+}
+
+.create-container fieldset .bool-section .active::after {
+    left: 30px;
+    background: var(--color-white);
+}
+
+.create-container fieldset .disabled {
+    opacity: .6;
+    pointer-events: none;
+}
+
+.create-container fieldset button[type="submit"] {
+    width: 100%;
+    background: var(--color-confirm-dark);
+    border: none;
+    border-radius: 20px;
+
+    margin-top: 40px;
+
+    font-size: 18px;
+    font-family: 'Nunito', sans-serif;
+    font-weight: bold;
+    color: var(--color-white);
+
+    padding: 20px 0;
+    transition: .3s;
+}
+
+.create-container fieldset button[type="submit"]:hover {
+    background: var(--color-confirm-light);
 }

@@ -9,12 +9,13 @@
     --text-title: #4D6F80;
     --text-base: #5C8599;
     --text-secondary: #8FA7B3;
-    --text-button: #FFF;
-    --color-shapes: #FFF;
     --color-white: #FFF;
     --color-background: #EBF2F5;
     --color-shape-border: #D3E2E5;
     --color-input-background: #F5F8FA;
+    --color-confirm: #39CC83;
+    --color-confirm-dark: #37C77F;
+    --color-confirm-light: #3EE08F;
 }
 
 * {
