@@ -143,16 +143,6 @@
     color: var(--color-white);
 }
 
-@media screen and (max-width: 800px) {
-    .map-container section {
-        width: 100vw;
-    }
-
-    .map-container aside {
-        display: none;
-    }
-}
-
 @media screen and (max-height: 650px) {
     .map-container aside h4 {
         display: none;
@@ -180,5 +170,15 @@
     .map-container aside h1 {
         font-size: 32px;
         margin: 0;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .map-container section {
+        width: 100vw;
+    }
+
+    .map-container aside {
+        display: none;
     }
 }
