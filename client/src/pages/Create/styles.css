@@ -1,7 +1,7 @@
 .create-container aside {
     position: fixed;
 
-    height: 100vh;
+    height: 100%;
     width: 96px;
     padding: 32px 0;
 
@@ -11,6 +11,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    z-index: 10;
 }
 
 .create-container aside img {
@@ -40,6 +41,8 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+
+    transform: translateX(55px);
 }
 
 .create-container fieldset {
@@ -210,4 +213,24 @@
 
 .create-container fieldset button[type="submit"]:hover {
     background: var(--color-confirm-light);
+}
+
+@media screen and (max-width: 950px) {
+    .create-container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .create-container aside {
+        width: 100%;
+        height: 96px;
+
+        flex-direction: initial;
+        padding: 32px;
+    }
+
+    .create-container .content-container {
+        margin-top: 96px;
+        transform: translateX(0);
+    }
 }
