@@ -23,9 +23,7 @@ const Create: React.FC = () => {
 
             <fieldset>
                 <form onSubmit={ handleSubmit }>
-                    <h2 className="section-title" >
-                        Dados
-                    </h2>
+                    <h2 className="section-title" >Dados</h2>
 
                     {/* <div>Mapa</div> */}
 
@@ -33,6 +31,37 @@ const Create: React.FC = () => {
                         <label htmlFor="nameForm">Nome</label>
                         <input type="text" id="nameForm" />
                     </section>
+                    
+                    <section className="input-box">
+                        <label htmlFor="aboutForm">Sobre</label>
+                        <textarea id="aboutForm" maxLength={300} />
+                    </section>
+
+                    <section className="input-box">
+                        <label htmlFor="whatsappForm">Número de Whatsapp</label>
+                        <input type="text" id="whatsappForm" />
+                    </section>
+
+                    {/* <div>Fotos</div> */}
+
+                    <h2 className="section-title">Visitação</h2>
+                    
+                    <section className="input-box">
+                        <label htmlFor="instructionsForm">Instruções</label>
+                        <textarea id="instructionsForm" />
+                    </section>
+                    
+                    <section className="input-box">
+                        <label htmlFor="hoursForm">Horário das visitas</label>
+                        <input type="text" id="hoursForm" />
+                    </section>
+
+                    <section className="bool-section">
+                        <label htmlFor="openOnWeekends">Atende fim de semana?</label>
+                        <input type="checkbox" id="openOnWeekends"/>
+                    </section>
+
+                    <button type="submit">Confirmar</button>
                 </form>
             </fieldset>
         </div>
