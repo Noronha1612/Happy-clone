@@ -42,6 +42,7 @@ const Map: React.FC<MapProps> = ({ children, interactive = true, ...props }) => 
             zoomControl={interactive}
             scrollWheelZoom={interactive}
             doubleClickZoom={interactive}
+            {...props}
         >
 
             <TileLayer

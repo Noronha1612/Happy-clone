@@ -1,10 +1,25 @@
 import React, { useState, FormEvent, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
+import { Marker, useMap, useMapEvent } from 'react-leaflet';
+import { LeafletMouseEvent } from 'leaflet';
+
+import Map from '../../components/Map';
+import HappyIcon from '../../components/Map/HappyIcon';
 
 import HappyPoint from '../../assets/HappyPoint.png'
 
 import './styles.css';
+
+const MapInteraction: React.FC<{ setCoords: (coords: number[]) => void }> = ({ setCoords }) => {
+    useMapEvent('click', handleMapClick);
+
+    function handleMapClick(event: LeafletMouseEvent) {
+        setCoords([ event.latlng.lat, event.latlng.lng ]);
+    }
+
+    return null;
+}
 
 const Create: React.FC = () => {
     const [ formFull, setFormFull ] = useState(true);
@@ -16,6 +31,7 @@ const Create: React.FC = () => {
     const [ instructions, setInstructions ] = useState('');
     const [ hours, setHours ] = useState('');
     const [ openOnWeekends, setOpenOnWeekends ] = useState(false);
+    const [ coords, setCoords ] = useState<number[]>([]);
 
     function handleSubmit(event: FormEvent) {
         event.preventDefault();
@@ -30,7 +46,8 @@ const Create: React.FC = () => {
                 !about ||
                 whatsapp.length !== 11 ||
                 !instructions ||
-                !hours
+                !hours ||
+                coords.length !== 2
             ) allValid = false;
     
             return allValid;
@@ -42,7 +59,8 @@ const Create: React.FC = () => {
         about,
         whatsapp,
         instructions,
-        hours
+        hours,
+        coords
     ]);
 
     return (
@@ -62,7 +80,17 @@ const Create: React.FC = () => {
                     <form onSubmit={ handleSubmit }>
                         <h2 className="section-title" >Dados</h2>
 
-                        {/* <div>Mapa</div> */}
+                        <section className="map-box">
+                            <Map 
+                                className="map"
+                            >
+                                {coords.length === 2 && (
+                                    <Marker position={[coords[0], coords[1]]} icon={ HappyIcon } />
+                                )}
+                                <MapInteraction setCoords={ setCoords } />
+                            </Map>
+                            <span>Clique no mapa para adicionar a localização</span>
+                        </section>
 
                         <section className="input-box">
                             <label htmlFor="nameForm">Nome</label>

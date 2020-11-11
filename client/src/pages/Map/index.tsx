@@ -47,8 +47,6 @@ const Map: React.FC = () => {
         getOrphanages();
     }, []);
 
-    console.log(orphanages);
-
     return (
         <div className="map-container">
             <aside>
