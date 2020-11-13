@@ -1,8 +1,10 @@
 import React, { useState, FormEvent, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
 import { Marker, useMapEvent } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
+
+import api from '../../services/api';
 
 import Map from '../../components/Map';
 import HappyIcon from '../../components/Map/HappyIcon';
@@ -10,6 +12,8 @@ import HappyIcon from '../../components/Map/HappyIcon';
 import HappyPoint from '../../assets/HappyPoint.png'
 
 import './styles.css';
+
+import { IOrphanageResponse } from '../../types/orphanages';
 
 const MapInteraction: React.FC<{ setCoords: (coords: number[]) => void }> = ({ setCoords }) => {
     useMapEvent('click', handleMapClick);
@@ -22,6 +26,8 @@ const MapInteraction: React.FC<{ setCoords: (coords: number[]) => void }> = ({ s
 }
 
 const Create: React.FC = () => {
+    const history = useHistory();
+
     const [ formFull, setFormFull ] = useState(true);
 
     // Fields
@@ -42,7 +48,7 @@ const Create: React.FC = () => {
             if ( 
                 name.length < 3 ||
                 !about ||
-                whatsapp.length !== 11 ||
+                !validateWhatsapp(whatsapp) ||
                 !instructions ||
                 !hours ||
                 coords.length !== 2
@@ -66,9 +72,11 @@ const Create: React.FC = () => {
             .filter(e => !isNaN(Number(e)) && !!e.trim())
             .join('');
 
-        if ( onlyNumbers.length > 11 ) return;
+        if ( onlyNumbers.length > 11 ) return false;
         
         setWhatsapp(onlyNumbers);
+
+        return onlyNumbers.length >= 10;
     }
 
     useEffect(() => {
@@ -83,12 +91,32 @@ const Create: React.FC = () => {
                 return `(${number.slice(0, 2)}) ${number.slice(2, 7)}-${number.slice(7)}`
         }
 
-        
         setWhatsappMask(whatsapp.length === 0 ? '' : maskPhone(whatsapp));
     }, [ whatsapp ])
         
-    function handleSubmit(event: FormEvent) {
+    async function handleSubmit(event: FormEvent) {
         event.preventDefault();
+
+        if(!formFull) return;
+
+        const data = {
+            name,
+            about,
+            instructions,
+            whatsapp,
+            location: {
+                latitude: coords[0],
+                longitude: coords[1]
+            },
+            photoUrls: [],
+            open_hours: hours,
+            open_on_weekends: openOnWeekends
+        };
+
+        const response = await api.post<IOrphanageResponse>('/orphanages', data);
+
+        if ( response.data.error ) alert('Internal Server Error!');
+        else history.push('/map')
     }
 
     return (
@@ -148,8 +176,11 @@ const Create: React.FC = () => {
                         </section>
                         
                         <section className="input-box">
-                            <label htmlFor="hoursForm">Horário das visitas</label>
-                            <input type="text" id="hoursForm" value={hours} onChange={e => setHours(e.target.value)} />
+                            <span>  
+                                <label htmlFor="hoursForm">Horário das visitas</label>
+                                <span className="aditional" >Máximo de 30 caracteres</span>
+                            </span>
+                            <input type="text" id="hoursForm" maxLength={30} value={hours} onChange={e => setHours(e.target.value)} />
                         </section>
 
                         <section className="bool-section">

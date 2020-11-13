@@ -262,6 +262,7 @@
     .create-container {
         display: flex;
         flex-direction: column;
+        width: 100vw;
     }
 
     .create-container aside {
