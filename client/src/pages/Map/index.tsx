@@ -4,17 +4,18 @@ import { FiPlus, FiArrowRight } from 'react-icons/fi';
 
 import LeafletMap from '../../components/Map';
 import MarkerIcon from '../../components/Map/HappyIcon';
+import LandingButton from '../../components/LandingButton';
 
 import GetUserLocation from '../../utils/GetUserLocation';
 import api from '../../services/api';
-
-import HappyPoint from '../../assets/HappyPoint.png';
 
 import { ILocation } from '../../types/location';
 import { IOrphanage, IOrphanageResponse } from '../../types/orphanages';
 
 import './styles.css';
 import { Link } from 'react-router-dom';
+
+import HappyPoint from '../../assets/HappyPoint.png'
 
 const Map: React.FC = () => {
 
@@ -50,7 +51,8 @@ const Map: React.FC = () => {
     return (
         <div className="map-container">
             <aside>
-                <img src={ HappyPoint } alt="Happy" className="happy-point"/>
+            
+                <LandingButton className="happy-point" />
 
                 <main>
                     <h1>Escolha um orfanato no mapa</h1>

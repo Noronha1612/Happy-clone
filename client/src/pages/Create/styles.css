@@ -18,7 +18,7 @@
     height: 64px;
 }
 
-.create-container aside a {
+.create-container aside .return-btn {
     background: var(--color-primary-dark);
     color: var(--color-white);
     border-radius: 18px;
@@ -33,7 +33,7 @@
     transition: .4s;
 }
 
-.create-container aside a:hover {
+.create-container aside .return-btn:hover {
     background: var(--color-primary-light);
 }
 

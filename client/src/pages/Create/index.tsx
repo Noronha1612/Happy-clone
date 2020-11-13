@@ -8,8 +8,7 @@ import api from '../../services/api';
 
 import Map from '../../components/Map';
 import HappyIcon from '../../components/Map/HappyIcon';
-
-import HappyPoint from '../../assets/HappyPoint.png'
+import LandingButton from '../../components/LandingButton';
 
 import './styles.css';
 
@@ -122,7 +121,7 @@ const Create: React.FC = () => {
     return (
         <div className="create-container" >
             <aside>
-                <img src={HappyPoint} alt="Happy" className="happy-point"/>
+                <LandingButton small />
 
                 <Link to="/map" className="return-btn" >
                     <FaArrowLeft size={17} /> 
