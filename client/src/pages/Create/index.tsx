@@ -1,6 +1,5 @@
 import React, { useState, FormEvent, useEffect } from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import { FaArrowLeft } from 'react-icons/fa';
+import { useHistory } from 'react-router-dom';
 import { Marker, useMapEvent } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
 
@@ -8,11 +7,11 @@ import api from '../../services/api';
 
 import Map from '../../components/Map';
 import HappyIcon from '../../components/Map/HappyIcon';
-import LandingButton from '../../components/LandingButton';
 
 import './styles.css';
 
 import { IOrphanageResponse } from '../../types/orphanages';
+import AsideBar from '../../components/AsideBar';
 
 const MapInteraction: React.FC<{ setCoords: (coords: number[]) => void }> = ({ setCoords }) => {
     useMapEvent('click', handleMapClick);
@@ -120,13 +119,7 @@ const Create: React.FC = () => {
 
     return (
         <div className="create-container" >
-            <aside>
-                <LandingButton small />
-
-                <Link to="/map" className="return-btn" >
-                    <FaArrowLeft size={17} /> 
-                </Link>
-            </aside>
+            <AsideBar />
 
             <div className="content-container">
                 <h4>Adicione um orfanato</h4>

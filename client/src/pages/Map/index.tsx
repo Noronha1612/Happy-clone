@@ -15,8 +15,6 @@ import { IOrphanage, IOrphanageResponse } from '../../types/orphanages';
 import './styles.css';
 import { Link } from 'react-router-dom';
 
-import HappyPoint from '../../assets/HappyPoint.png'
-
 const Map: React.FC = () => {
 
     const [ location, setLocation ] = useState<ILocation>({ 

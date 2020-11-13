@@ -1,0 +1,38 @@
+.aside-bar {
+    position: fixed;
+
+    height: 100%;
+    width: 96px;
+    padding: 32px 0;
+
+    background: var(--color-primary);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 10;
+}
+
+.aside-bar img {
+    height: 64px;
+}
+
+.aside-bar .return-btn {
+    background: var(--color-primary-dark);
+    color: var(--color-white);
+    border-radius: 18px;
+
+    height: 48px;
+    width: 48px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: .4s;
+}
+
+.aside-bar .return-btn:hover {
+    background: var(--color-primary-light);
+}
