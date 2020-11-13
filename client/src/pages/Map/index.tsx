@@ -75,9 +75,9 @@ const Map: React.FC = () => {
                                 className="popup"
                             >
                                 <span>{ orph.name }</span>
-                                <button className="orphanage-btn">
+                                <Link to={`/orphanage/${orph.id}`} className="orphanage-btn">
                                     <FiArrowRight size={14} className="arrowR-icon" />
-                                </button>
+                                </Link>
                             </Popup>
                         </Marker>
                     ))}
