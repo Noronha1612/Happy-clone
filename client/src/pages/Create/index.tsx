@@ -1,7 +1,7 @@
 import React, { useState, FormEvent, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';
-import { Marker, useMap, useMapEvent } from 'react-leaflet';
+import { Marker, useMapEvent } from 'react-leaflet';
 import { LeafletMouseEvent } from 'leaflet';
 
 import Map from '../../components/Map';
@@ -33,14 +33,12 @@ const Create: React.FC = () => {
     const [ openOnWeekends, setOpenOnWeekends ] = useState(false);
     const [ coords, setCoords ] = useState<number[]>([]);
 
-    function handleSubmit(event: FormEvent) {
-        event.preventDefault();
-    }
-
+    const [ whatsappMask, setWhatsappMask ] = useState('');
+    
     useEffect(() => {
         function validateInputs() {
             let allValid = true;
-    
+            
             if ( 
                 name.length < 3 ||
                 !about ||
@@ -49,10 +47,10 @@ const Create: React.FC = () => {
                 !hours ||
                 coords.length !== 2
             ) allValid = false;
-    
+                
             return allValid;
-        }
-
+        }  
+        
         setFormFull(validateInputs());
     }, [
         name,
@@ -62,6 +60,36 @@ const Create: React.FC = () => {
         hours,
         coords
     ]);
+
+    function validateWhatsapp(number: string) {
+        const onlyNumbers = number.split('')
+            .filter(e => !isNaN(Number(e)) && !!e.trim())
+            .join('');
+
+        if ( onlyNumbers.length > 11 ) return;
+        
+        setWhatsapp(onlyNumbers);
+    }
+
+    useEffect(() => {
+        const maskPhone = (number: string) => {
+            if ( number.length <= 2) 
+                return `(${number.slice(0, 2)}`;
+            else if ( number.length <= 6 ) 
+                return `(${number.slice(0, 2)}) ${number.slice(2)}`;
+            else if ( number.length <= 10 ) 
+                return `(${number.slice(0, 2)}) ${number.slice(2, 6)}-${number.slice(6)}`
+            else
+                return `(${number.slice(0, 2)}) ${number.slice(2, 7)}-${number.slice(7)}`
+        }
+
+        
+        setWhatsappMask(whatsapp.length === 0 ? '' : maskPhone(whatsapp));
+    }, [ whatsapp ])
+        
+    function handleSubmit(event: FormEvent) {
+        event.preventDefault();
+    }
 
     return (
         <div className="create-container" >
@@ -94,7 +122,7 @@ const Create: React.FC = () => {
 
                         <section className="input-box">
                             <label htmlFor="nameForm">Nome</label>
-                            <input type="text" id="nameForm" onChange={e => setName(e.target.value)} />
+                            <input type="text" id="nameForm" value={name} onChange={e => setName(e.target.value)} />
                         </section>
                         
                         <section className="input-box">
@@ -102,12 +130,12 @@ const Create: React.FC = () => {
                                 <label htmlFor="aboutForm">Sobre</label>
                                 <span className="aditional" >Máximo de 300 caracteres</span>
                             </span>
-                            <textarea id="aboutForm" maxLength={300} onChange={e => setAbout(e.target.value)} />
+                            <textarea id="aboutForm" maxLength={300} value={about} onChange={e => setAbout(e.target.value)} />
                         </section>
 
                         <section className="input-box">
                             <label htmlFor="whatsappForm">Número de Whatsapp</label>
-                            <input type="text" id="whatsappForm" onChange={e => setWhatsapp(e.target.value)} />
+                            <input type="tel" id="whatsappForm" value={whatsappMask} onChange={e => validateWhatsapp(e.target.value)} />
                         </section>
 
                         {/* <div>Fotos</div> */}
@@ -116,12 +144,12 @@ const Create: React.FC = () => {
                         
                         <section className="input-box">
                             <label htmlFor="instructionsForm">Instruções</label>
-                            <textarea id="instructionsForm" onChange={e => setInstructions(e.target.value)} />
+                            <textarea id="instructionsForm" value={instructions} onChange={e => setInstructions(e.target.value)} />
                         </section>
                         
                         <section className="input-box">
                             <label htmlFor="hoursForm">Horário das visitas</label>
-                            <input type="text" id="hoursForm" onChange={e => setHours(e.target.value)} />
+                            <input type="text" id="hoursForm" value={hours} onChange={e => setHours(e.target.value)} />
                         </section>
 
                         <section className="bool-section">
