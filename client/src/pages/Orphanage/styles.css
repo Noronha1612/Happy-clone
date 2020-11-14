@@ -6,7 +6,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: var(--text-secondary);
 }
 
 .orphanage-container main h4 {
@@ -15,6 +14,7 @@
     font-family: 'Nunito', sans-serif;
     font-weight: 400;
     font-size: 18px;
+    color: var(--text-secondary);
 }
 
 .orphanage-container main fieldset {
