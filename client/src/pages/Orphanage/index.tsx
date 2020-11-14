@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { RouteComponentProps } from 'react-router';
+import AsideBar from '../../components/AsideBar';
 
 import api from '../../services/api';
 
@@ -39,7 +40,13 @@ const Orphanage: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
 
     return (
         <div className="orphanage-container">
-            <h1>{orphanage.name}</h1>
+            <AsideBar />
+            <main>
+                <h4>Orfanato</h4>
+                <fieldset>
+                    
+                </fieldset>
+            </main>
         </div>
     );
 }
