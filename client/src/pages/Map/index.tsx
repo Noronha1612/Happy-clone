@@ -16,11 +16,11 @@ import { IOrphanage, IOrphanageResponse } from '../../types/orphanages';
 import './styles.css';
 import { Link } from 'react-router-dom';
 
-const MapInteractions: React.FC = () => {
+const MapInteractions: React.FC<{ setZoom: (zoom: number) => void }> = ({ setZoom }) => {
     useMapEvent('zoom', handleZoomChange);
 
     function handleZoomChange(event: LeafletEvent) {
-        console.log(event.sourceTarget)
+        setZoom(event.sourceTarget._zoom);
     }
 
     return null;
@@ -34,6 +34,7 @@ const Map: React.FC = () => {
     });
 
     const [ orphanages, setOrphanages ] = useState<IOrphanage[]>([]);
+    const [ zoom, setZoom ] = useState(15);
 
     useEffect(() => {
         async function getPosition() {
@@ -78,7 +79,7 @@ const Map: React.FC = () => {
 
             <section>
                 <LeafletMap>
-                    { orphanages.map( orph => (
+                    { zoom > 12 && orphanages.map( orph => (
                         <Marker key={orph.id} icon={MarkerIcon} position={[orph.location.latitude, orph.location.longitude]}>
                             <Popup 
                                 closeButton={false}
@@ -92,7 +93,7 @@ const Map: React.FC = () => {
                             </Popup>
                         </Marker>
                     ))}
-                    <MapInteractions />
+                    <MapInteractions setZoom={ setZoom } />
                 </LeafletMap>
             </section>
 
