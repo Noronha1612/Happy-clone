@@ -52,13 +52,13 @@ const Orphanage: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
                 <fieldset>
                     <h1>{orphanage.name}</h1>
                     <p>{orphanage.about}</p>
-                    <section>
-                        <Map>
+                    <section className="map-section">
+                        <Map interactive={false} coords={[ orphanage.location.latitude, orphanage.location.longitude ]} className="map-box">
                             <Marker 
                                 position={ [orphanage.location.latitude, orphanage.location.longitude] } 
                                 icon={HappyIcon}
-                            />
-                            <span>Ver rotas no Google Mapos</span>
+                                />
+                            <span>Ver rotas no Google Maps</span>
                         </Map>
                     </section>
                     
@@ -66,22 +66,25 @@ const Orphanage: React.FC<RouteComponentProps<MatchParams>> = ({ match }) => {
                     <p>{orphanage.instructions}</p>
                     
                     <div>
-                        <section>
-                            <FiClock />
+                        <section className="info-box visit-hours">
+                            <FiClock size={35} color='#15B6D6' />
                             <p>
                                 {orphanage.open_hours}
                             </p>
                         </section>
-                        <section>
-                            <FiInfo />
+                        <section className={`info-box ${ orphanage.open_on_weekends ? 'active' : 'disabled' }`}>
+                            <FiInfo size={35} color={orphanage.open_on_weekends ? '#39CC83' : '#FF669D'} />
                             <p>
-                                {orphanage.open_hours}
+                                {orphanage.open_on_weekends? 
+                                    'Atedemos fim de semana' :
+                                    'Não atendemos fim de semana'
+                                }
                             </p>
                         </section>
                     </div>
 
-                    <button>
-                        <FaWhatsapp />
+                    <button className="contact-btn">
+                        <FaWhatsapp size={20} color="#FFF" />
                         <span>Entrar em contato</span>
                     </button>
                 </fieldset>

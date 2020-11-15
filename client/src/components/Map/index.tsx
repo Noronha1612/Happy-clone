@@ -7,10 +7,11 @@ import { ILocation } from '../../types/location';
 
 interface MapProps extends MapContainerProps {
     interactive?: boolean;
+    coords?: [number, number]
     children: React.ReactNode;
 }
 
-const Map: React.FC<MapProps> = ({ children, interactive = true, ...props }) => {
+const Map: React.FC<MapProps> = ({ children, interactive = true, coords, ...props }) => {
     const [ location, setLocation ] = useState<ILocation>({
         coords: {
             latitude: 0,
@@ -27,6 +28,13 @@ const Map: React.FC<MapProps> = ({ children, interactive = true, ...props }) => 
     useEffect(() => {
         window.navigator.geolocation.getCurrentPosition(async position => {
             const response = await GetUserLocation(position);
+
+            if ( coords ) {
+                response.coords = {
+                    latitude: coords[0],
+                    longitude: coords[1]
+                };
+            }
 
             setLocation(response);
         });

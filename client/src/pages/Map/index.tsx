@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Marker, Popup } from 'react-leaflet';
+import { Marker, Popup, useMapEvent } from 'react-leaflet';
 import { FiPlus, FiArrowRight } from 'react-icons/fi';
+import { LeafletEvent } from 'leaflet';
 
 import LeafletMap from '../../components/Map';
 import MarkerIcon from '../../components/Map/HappyIcon';
@@ -14,6 +15,16 @@ import { IOrphanage, IOrphanageResponse } from '../../types/orphanages';
 
 import './styles.css';
 import { Link } from 'react-router-dom';
+
+const MapInteractions: React.FC = () => {
+    useMapEvent('zoom', handleZoomChange);
+
+    function handleZoomChange(event: LeafletEvent) {
+        console.log(event.sourceTarget)
+    }
+
+    return null;
+}
 
 const Map: React.FC = () => {
 
@@ -81,6 +92,7 @@ const Map: React.FC = () => {
                             </Popup>
                         </Marker>
                     ))}
+                    <MapInteractions />
                 </LeafletMap>
             </section>
 
